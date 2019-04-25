@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>b8c6cf24-bf5a-47f7-b28f-8ab646edc45f</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>DamaShared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ComputerPlayControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\GamePresenter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)InvalidInputException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)InvalidMovementException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\IGame.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Menu\Load\ILoad.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Menu\Load\LoadPresenter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ManualPlayControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Menu\IMenu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Menu\MenuPresenter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PlayControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Position.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PuppetModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Save.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SingletonPuppets.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TableFactory.cs" />
+  </ItemGroup>
+</Project>
