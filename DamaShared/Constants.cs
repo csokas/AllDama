@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DamaShared
 {
-    class Constants
+   public class Constants
     {
         public const string nemTudLépni = "Nem tud lépni!";
         public const string fileNemLetezik = "A fájl már létezik, adj meg másik fájl nevet!";

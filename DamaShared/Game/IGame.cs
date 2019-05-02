@@ -20,6 +20,7 @@ namespace DamaShared
         void DisplayField(PuppetModel puppet);
         void AddPresenter(IGamePresenter presenter);
         void Wait();
+        Position[] ParseCoordinates(string nextMove);
     }
 
     public interface IGamePresenter

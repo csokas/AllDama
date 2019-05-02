@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.button_Play = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // button_Play
             // 
-            this.button1.Location = new System.Drawing.Point(76, 138);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 69);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Play";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button_Play.Location = new System.Drawing.Point(76, 138);
+            this.button_Play.Name = "button_Play";
+            this.button_Play.Size = new System.Drawing.Size(112, 69);
+            this.button_Play.TabIndex = 0;
+            this.button_Play.Text = "Play";
+            this.button_Play.UseVisualStyleBackColor = true;
+            this.button_Play.Click += new System.EventHandler(this.PlayClick);
             // 
             // button2
             // 
@@ -51,6 +51,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "Load";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.LoadClick);
             // 
             // button3
             // 
@@ -60,6 +61,7 @@
             this.button3.TabIndex = 2;
             this.button3.Text = "Quit";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.QuitClick);
             // 
             // Menu
             // 
@@ -68,16 +70,17 @@
             this.ClientSize = new System.Drawing.Size(593, 338);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button_Play);
             this.Name = "Menu";
             this.Text = "Menu";
+            this.Load += new System.EventHandler(this.Menu_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button_Play;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
     }

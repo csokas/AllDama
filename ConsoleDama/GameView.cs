@@ -109,7 +109,7 @@ namespace ConsoleDama
             }
         }
 
-        private Position[] ParseCoordinates(string nextMove)
+        public Position[] ParseCoordinates(string nextMove)
         {
             try
             {

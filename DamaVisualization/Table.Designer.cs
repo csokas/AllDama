@@ -1,6 +1,6 @@
 ﻿namespace DamaVisualization
 {
-    partial class Table
+    public partial class Table
     {
         /// <summary>
         /// Required designer variable.
@@ -38,14 +38,15 @@
             this.richTextBox1.Size = new System.Drawing.Size(134, 135);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
-            // Form1
+            // Table
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(705, 555);
             this.Controls.Add(this.richTextBox1);
-            this.Name = "Form1";
+            this.Name = "Table";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -54,7 +55,12 @@
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBox1; //private 
+        public string GetRichTextBoxText
+        {
+            get { return richTextBox1.Text; }
+            set { richTextBox1.Text = value; }
+        }
     }
 }
 

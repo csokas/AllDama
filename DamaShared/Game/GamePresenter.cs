@@ -31,7 +31,7 @@ namespace DamaShared
         public void Start()
         {
             PuppetModel.Colour? winnerColour = PlayControl.EndOfGame(puppets);
-            if (PlayControl.EndOfGame(puppets) != null)
+            if (winnerColour != null)
             {
                 view.ShowGameOver(Constants.gameOverMessage + winnerColour.ToString());
             }

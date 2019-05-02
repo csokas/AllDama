@@ -3,7 +3,7 @@ using System.IO;
 
 namespace DamaShared.Menu.Load
 {
-    class LoadPresenter : ILoadPresenter
+    public class LoadPresenter : ILoadPresenter
     {
         ILoadView loadView;
 

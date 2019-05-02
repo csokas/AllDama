@@ -1,22 +1,20 @@
 ﻿using DamaShared;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
 namespace DamaVisualization
 {
-    public partial class Table : Form
+    public partial class Table : Form, IGameView
     {
         new const int Size = 50;
-        string from = null;
-        
+        private string from = null;
+        private string to;
+        private IGamePresenter gamePresenter;
+        PuppetModel[,] puppets = SingletonPuppets.instance.Value.GetInstance();
+        private Button prevoiusButton;
+
         public Table()
         {
             InitializeComponent();
@@ -39,9 +37,58 @@ namespace DamaVisualization
                     {
                         b.BackColor = Color.Black;
                     }
-                    if (puppets[j, i] != null)
+
+                    b.Location = new Point(0 + b.Width * i, 0 + b.Height * j);
+                    b.Click += new System.EventHandler(this.button1_Click);
+                    b.Tag = new Position(j, i);
+                    Controls.Add(b);
+                }
+            }
+            ShowTable();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string to = null;
+            if (sender is Button)
+            {
+                Button button = sender as Button;
+                richTextBox1.Text = button.Tag.ToString();
+                if (from == null)
+                {
+                    from = button.Tag.ToString();
+                }
+                else
+                {
+                    to = button.Tag.ToString();
+                }
+
+                if (prevoiusButton == null)
+                {
+                    prevoiusButton = button;
+                }
+                else
+                {
+                    gamePresenter.ManualTurn(prevoiusButton.Tag as Position, button.Tag as Position);
+                    prevoiusButton = null;
+                }
+            }
+
+        }
+
+        public void ShowTable()
+        {
+            Position tag;
+            foreach (var item in Controls)
+            {
+                if (item is Button)
+                {
+                    Button b = (item as Button);
+                    tag = (item as Button).Tag as Position;
+
+                    if (puppets[tag.x, tag.y] != null)
                     {
-                        if (puppets[j, i].Color == PuppetModel.Colour.Blue)
+                        if (puppets[tag.x, tag.y].Color == PuppetModel.Colour.Blue)
                         {
                             b.Image = Image.FromFile(@"C:\Users\Lackó\Pictures\Blue.png");
                         }
@@ -50,37 +97,87 @@ namespace DamaVisualization
                             b.Image = Image.FromFile(@"C:\Users\Lackó\Pictures\Red.png");
                         }
                     }
-
-                    b.Location = new Point(0 + b.Width * i, 0 + b.Height * j);
-                    b.Click += new System.EventHandler(this.button1_Click);
-                    b.Tag = new Position(i, j);
-                    Controls.Add(b);
+                    else
+                    {
+                        b.Image = null;
+                    }
                 }
             }
-
-           
         }
 
-
-        private void button1_Click(object sender, EventArgs e)
+        public void WaitForTurn()
         {
-            string to = null;
-            if (sender is Button)
-            {
-                richTextBox1.Text = ((Button)sender).Tag.ToString();
-                if(from == null)
-                {
-                    from = ((Button)sender).Tag.ToString();
-                }
-                else
-                {
-                    to = ((Button)sender).Tag.ToString();
-                }
-                
-            }
-            
+            //string nextMove = from + to;
+            //Position[] poses = ParseCoordinates(nextMove);
+            //if (poses != null)
+            //{
+            //    gamePresenter.ManualTurn(poses[0], poses[1]);
+            //}
+            //else
+            //{
+            //    ShowError("Nagyon hibás paraméter");
+            //    WaitForTurn();
+            //}
         }
 
+        private string FindPositions()
+        {
+            //throw new NotImplementedException();
+            return null;
+        }
 
+        public void ShowError(string message)
+        {
+            richTextBox1.Text = message;
+        }
+
+        public void ShowGameOver(string message)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Clear()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string ChooseFileToLoad()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DisplayField(PuppetModel puppet)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddPresenter(IGamePresenter presenter)
+        {
+            gamePresenter = presenter;
+        }
+
+        public void Wait()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Position[] ParseCoordinates(string nextMove)
+        {
+            try
+            {
+                return new Position[] { new Position(Convert.ToInt32(nextMove[1] - '1'), (nextMove[0] - 'A')),
+                    new Position(Convert.ToInt32(nextMove[4] - '1'), nextMove[3] - 'A')};
+
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

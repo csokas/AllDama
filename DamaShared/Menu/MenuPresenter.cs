@@ -4,7 +4,7 @@ using System;
 
 namespace DamaShared
 {
-    class MenuPresenter : IMenuPresenter, ILoadListener
+    public class MenuPresenter : IMenuPresenter, ILoadListener
     {
         IMenuView menuView;
         IGameView gameView;
